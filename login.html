@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+    body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image: url("https://cdn.wallpapersafari.com/53/65/tvTGdp.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+   #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Place the video behind all other content */
+        }
+
+h1 {
+  color: white;
+}
+
+form {
+  width: 300px;
+  margin: 20px auto;
+  padding: 40px 55px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #220b0b;
+  border-radius: 3px;
+}
+
+input[type="button"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+    </style>
+    <script>
+        function validate() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Check if the username and password are valid
+            if(password ==="123") {
+                // If valid, redirect to the second page
+                window.location = "option.html";
+            } else {
+                // If invalid, show an error message
+                alert("Invalid username or password!");
+            }
+        }
+    </script>
+    
+</head>
+<body>
+  <br><br><br><br>
+    <center>
+    <h1> Login Here !</h1>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+        <input type="button" value="Login" onclick="validate()"><br><br><br>
+        
+    </form>
+    <center>
+       
+
+</body>
+</html>

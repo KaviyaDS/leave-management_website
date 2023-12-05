@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color:black;
+        }
+        .container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            width: 400px;
+        }
+        .form-group {
+            padding: 30px;
+            margin-bottom: 80px;
+            text-align: left;
+            border: 2px solid #201212;
+        }
+        .form-group label {
+            font-size: 18px;
+            color: #555;
+        }
+        .form-group select,
+        .form-group input[type="submit"] {
+            font-size: 16px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #201212;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place the video behind other content */
+            overflow: hidden;
+        }
+
+        /* Style the video itself */
+        video {
+            object-fit: cover; /* Cover the entire container */
+            width: 100%;
+            height: 100%;
+        }
+</style>
+    <script>
+        function redirectToLeavePage() {
+            var leaveType = document.getElementById("leaveType").value;
+            if (leaveType === "casual") {
+                window.location.href = "casual.html"; // Redirect to the "casual.html" page
+            } else if (leaveType === "medical") {
+                // Redirect to the "medical.html" page or another page as needed
+                window.location.href = "medical.html";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="https://player.vimeo.com/external/398005584.sd.mp4?s=a488a2848177e980e31515d919ec556b8ecc5b06&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <center>
+        <div class="container">
+    <h1>Leave Options</h1>
+    <form action="#" method="post" onsubmit="redirectToLeavePage(); return false;">
+        <div class="form-group">
+        <label for="leaveType"><h1>Select Leave Type:</h1></label><br><br><br>
+        <select id="leaveType" name="leaveType">
+            <option value="casual">Casual Leave</option>
+            <option value="medical">Medical Leave</option>
+        </select>
+        <br><br><br><br>
+        <input type="submit" value="Submit"></div>
+    </form></center></div>
+</body>
+</html>

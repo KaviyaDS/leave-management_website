@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Casual Leave Application</title>
+    <style>
+        body {
+            background-image: url("https://media.istockphoto.com/id/1340231949/photo/annual-leave-out-of-office-taking-a-break-from-work.jpg?s=612x612&w=0&k=20&c=OPsEb6WGJIAvPrmhwrTmmMv8D_plh9eTh_h8rKsLaME=");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center; /* Center-align text within the body */
+            margin: 0; /* Remove default margin for body */
+            padding: 0; /* Remove default padding for body */
+        }
+        .container {
+            width: 80%; /* Set a desired width for the content frame */
+            margin: 0 auto; /* Center the container horizontally */
+            background-color: #f7f7f7; /* Optional: Add a background color to the container */
+            padding: 80px; /* Optional: Add padding to the container */
+        }
+        h1 {
+            font-size: 24px;
+        }
+        label {
+            font-size: 18px;
+        }
+        input, select {
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function calculateLeaveDays() {
+            var startDate = new Date(document.getElementById("startDate").value);
+            var endDate = new Date(document.getElementById("endDate").value);
+            var timeDiff = endDate - startDate;
+            var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
+            var maxLeaveDays = 8; // Maximum available leave days
+            
+            // Ensure the number of days does not exceed the available 8 days
+            if (daysDiff >= 1 && daysDiff <= maxLeaveDays) {
+                var remainingDays = maxLeaveDays - daysDiff;
+                document.getElementById("leaveDays").value = daysDiff;
+                return remainingDays;
+            } else {
+                document.getElementById("leaveDays").value = "";
+                return -1; // Indicates an error
+            }
+        }
+
+        function submitForm() {
+            var remainingDays = calculateLeaveDays();
+            if (remainingDays >= 0) {
+                alert("You have " + remainingDays + " more days");
+                // You can submit the form data to a server here if needed
+            } else {
+                alert("You can only take a maximum of 8 days of casual leave.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+    <h1>Casual Leave Application</h1>
+    <p>You have 8 days to take casual leave.</p><br>
+    <form action="#" method="post" onsubmit="submitForm(); return false;">
+        <label for="leaveDays">How many days are you taking leave?</label>
+        <input type="number" id="leaveDays" name="leaveDays" min="1" max="8" required>
+        <br><br>
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required onchange="calculateLeaveDays()">
+        <br><br>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required onchange="calculateLeaveDays()">
+        <br><br>
+        <label for="leaveReason">Reason for Leave:</label>
+        <select id="leaveReason" name="leaveReason">
+            <option value="temple">Went to Temple</option>
+            <option value="function">Attended Function</option>
+            <option value="relativePassed">Relative Passed Away</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>
